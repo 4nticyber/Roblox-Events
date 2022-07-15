@@ -1,0 +1,81 @@
+
+-- [[ variables ]]
+local ZMKLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/4nticyber/zmware/main/UILib"))()
+local Player = game.Players.LocalPlayer
+local Mouse  = Player:GetMouse();
+local rootPart = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
+local TS = game:GetService("TweenService")
+local TweenTime = 5 
+local TweenPosition = Vector3.new(-3.0691208839416504, 30.65156364440918, -121.45934295654297) -- Tween to this position
+local Hat = TS:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(TweenTime, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), {Position = TweenPosition})
+
+
+-- [[ MWMWMWMWMWMWMMWMW]]
+
+local win = ZMKLib:Create({
+    Name = "ZARZIES | Innovation Event",
+    StartupSound = {
+        Toggle = true,
+        SoundID = "rbxassetid://6958727243", 
+        TimePosition = 1
+    }
+})
+
+local maintab = win:Tab('Main')
+local uitab = win:Tab('ui')
+
+maintab:Button('Get Valkyrie', function()
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Scavenger.Circlet.CFrame
+end)
+
+maintab:Button('Get Horns (Will rejoin so rexecute when rejoined)', function()
+     game:GetService("TeleportService"):Teleport(game.PlaceId)
+end)
+
+
+maintab:Button('Get TopHat', function()
+     local pieces = {
+    p1 = game:GetService("Workspace").CubePieces.Block1.CFrame,
+    p2 = game:GetService("Workspace").CubePieces.Block2.CFrame,
+    p3 = game:GetService("Workspace").CubePieces.Block3.CFrame,
+    p4 = game:GetService("Workspace").CubePieces.Block4.CFrame
+}
+
+for i,v in pairs(pieces) do
+    rootPart.CFrame = pieces[i]
+    wait(0.5)
+    
+end
+end)
+
+
+
+
+
+
+maintab:Button('Get TimelessHat (Camera will glitch perm so get suit)', function()
+    Hat:Play()
+    task.Wait(2)
+    game:GetService("TeleportService"):Teleport(game.PlaceId)
+    
+end)
+
+maintab:Button('Get Suit', function()
+ local args = {
+        [1] = {
+            ["Best Content Update"] = "Loomian Legacy - Beach Update",
+            ["People's Choice"] = "BedWars",
+            ["Best Use of Avatar Fashion"] = "World // Zero",
+            ["Video Star of the Year"] = "Flamingo" },
+        [2] = workspace.VotingScreen}
+    
+    game:GetService("ReplicatedStorage").Events.RemoteEvents.Vote:FireServer(unpack(args))
+    task.wait(5)
+end)
+
+
+
+
+uitab:Button('Destroy GUI', function()
+    win:Exit()
+end)
